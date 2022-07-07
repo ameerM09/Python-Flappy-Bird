@@ -47,7 +47,7 @@ class Bird():
 	ASSETS = BIRD_ASSETS
 	MAX_TILT = 25
 	ROTATION_VELOCITY = 20
-	ANIMATION_TIME = 5
+	ANIMATION_TIME = 10
 
 	def __init__(self, x, y):
 		self.x = x 
@@ -139,7 +139,7 @@ class Obstacle():
 		self.get_ycor()
 
 	def get_ycor(self):
-		self.height = random.randint(100, 375)
+		self.height = random.randint(110, 375)
 
 		self.top_obj = self.height - self.TOP_OBSTACLE_ASSET.get_height()
 		self.bottom_obj = self.height + self.OBJ_SPACING
@@ -281,9 +281,6 @@ def main_game_loop():
 			for removed_obstacle in removed_obstacles:
 				obstacles.remove(removed_obstacle)
 
-			if bird.y + BIRD_ASSETS[0].get_height() >= 730:
-				pass
-
 			platform.drag_movement()
 			render_elements(WIN, bird_score, menu_bar, bird, obstacles, platform)
 
@@ -304,6 +301,10 @@ def main_menu():
 
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				main_game_loop()
+
+			elif event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_SPACE:
+					main_game_loop()
 
 		pygame.display.update()
 
