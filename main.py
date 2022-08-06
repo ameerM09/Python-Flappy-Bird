@@ -1,8 +1,5 @@
 from settings import *
 
-pygame.init() 
-pygame.font.init()
-
 WIN_WIDTH = 500
 WIN_HEIGHT = 750
 CAPTION = 'Flappy Bird'
